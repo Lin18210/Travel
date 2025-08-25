@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travio Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="Assets/Travio1.jpg" alt="Logo">
+            <h1>Travio</h1>
+        </div>
+        <button class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+        <nav class="menu" role="navigation">
+            <ul class="menu-list">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="promotional-banner">
+        <img src="Assets/background.jpg" alt="Promotional Banner">
+        <div class="banner-content">
+            <h2>Welcome to Travio</h2>
+            <p>Experience luxury, comfort, and exceptional service in every detail</p>
+            <a href="#" class="cta-button">Discover More</a>
+        </div>
+    </section>
+
+    <section class="multimedia-content">
+        <div class="image-content">
+            <h3>Image</h3>
+            <img src="Assets/Travio2.png" alt="Image content">
+        </div>
+        <div class="video-content">
+            <h3>Video</h3>
+            <video controls src="Assets/Ads.mp4"></video>
+        </div>
+        <div class="audio-content">
+            <h3>Audio</h3>
+            <audio controls preload="metadata">
+                <source src="Assets/Ads-audio.mp3" type="audio/mpeg">
+                <source src="Assets/Ads-audio.ogg" type="audio/ogg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </section>
+
+    <section class="content-paragraphs">
+        <div class="paragraph">
+            <h3>About our Business</h3>
+            <p>At Travio, we help people turn their travel dreams into reality. Whether it’s a relaxing beach holiday, an adventurous mountain trek, or a cultural city tour, we provide complete travel solutions tailored to your needs.
+
+We offer flight bookings, hotel reservations, guided tours, and customized travel packages designed to fit every budget. Our team focuses on making travel simple, safe, and enjoyable — so you can spend less time planning and more time experiencing the world.
+
+With trusted partners, friendly service, and a passion for discovery, Travelio is your companion for unforgettable journeys.</p>
+        </div>
+        <div class="paragraph">
+            <h3>Color Palette Explanation</h3>
+            <p>The Travio website's color palette is designed to reflect adventure, trust, and relaxation, fitting its travel theme. Blue, seen in the background and footer, symbolizes trust and calmness, evoking the sky and sea. Purple, used in the header and button, adds luxury and creativity, enhancing the adventurous feel. White provides a clean, readable background, while orange in the "travio" logo brings energy and contrast. Gray in the footer adds stability, creating a cohesive and professional design that balances excitement with comfort.</p>
+            <div class="image-text">
+                <img src="Assets/Travio2.png" alt="Color Palette">
+            </div>
+        </div>
+        <div class="paragraph">
+            <h3>Emotions, Branding Message</h3>
+            <p>The emotions and branding message for the Travio website are crafted to inspire excitement, trust, and a sense of discovery. The message, though currently placeholder text, aims to evoke a feeling of anticipation and confidence, suggesting that every journey is an opportunity for memorable experiences. The use of vibrant colors and travel imagery, like the airplane and map, stirs enthusiasm and wanderlust, while the professional layout and clear call-to-action ("Discover More") foster reliability and ease. This combination positions Travello as a dependable companion for travelers seeking luxurious, hassle-free adventures.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-icon">
+            <img src="Assets/Logo3.svg" alt="Footer Icon">
+        </div>
+        <p>&copy; 2025 Travelio Website</p>
+    </footer>
+
+    <script>
+        const navToggle = document.querySelector('.nav-toggle');
+        const menu = document.querySelector('.menu');
+
+        function setExpanded(isOpen){
+            navToggle.setAttribute('aria-expanded', String(isOpen));
+            menu.classList.toggle('open', isOpen);
+        }
+
+        if (navToggle && menu) {
+            navToggle.addEventListener('click', (e) => {
+                e.stopPropagation();
+                const isOpen = menu.classList.contains('open');
+                setExpanded(!isOpen);
+            });
+
+            // Close when clicking outside
+            document.addEventListener('click', (e) => {
+                if (!menu.contains(e.target) && !navToggle.contains(e.target)) {
+                    setExpanded(false);
+                }
+            });
+
+            // Close when clicking a menu link
+            menu.addEventListener('click', (e) => {
+                const target = e.target;
+                if (target && target.closest('a')) {
+                    setExpanded(false);
+                }
+            });
+
+            // Reset state when resizing to desktop
+            window.addEventListener('resize', () => {
+                if (window.innerWidth >= 769) {
+                    setExpanded(false);
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>
